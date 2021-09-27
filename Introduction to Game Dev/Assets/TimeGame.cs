@@ -33,7 +33,7 @@ public class TimeGame : MonoBehaviour {
         float playerWaitTime = Time.time - roundStartTime;
         float error = Mathf.Abs(waitTime - playerWaitTime);
 
-        print("You waited for " + playerWaitTime + " seconds. That's " + error + " seconds off. " + GenerateMessage(error);
+        print("You waited for " + playerWaitTime + " seconds. That's " + error + " seconds off. " + GenerateMessage(error));
 
         Invoke("SetNewRandomTime", roundStartDelayTime);
     }
