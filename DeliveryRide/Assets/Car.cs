@@ -5,12 +5,9 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 17f;
-    [SerializeField] float steerSpeed = 280;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float slowSpeed = 12f;
+    [SerializeField] float steerSpeed = 280f;
+    [SerializeField] float boostSpeed = 25f;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +19,15 @@ public class Car : MonoBehaviour
         // Applying those changes to the object
         transform.Translate(0, moveAmount, 0); // Translates only in the objects Y-axis (relative vertical)
         transform.Rotate(0, 0, -steerAmount); // Rotates only on the Z-axis (since it is top-down view)
-        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "Boost"){
+            moveSpeed = boostSpeed;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        moveSpeed = slowSpeed;    
     }
 }
